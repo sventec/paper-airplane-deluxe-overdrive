@@ -43,13 +43,16 @@ public class Launch : MonoBehaviour {
 	 	}
 
 	 	//UI
-	 	if(track)
-	 	{
-	 		currentDistance.text = "Distance: " + transform.position.x.ToString();
-	 		currentHeight.text = "Current Height: " + transform.position.y.ToString();
-	 		if(transform.position.y > float.Parse(maxHeight.text))
-	 			maxHeight.text = transform.position.y.ToString();
-	 	}
+		if(track)
+		{
+			currentDistance.text = "Distance: " + transform.position.x.ToString();
+			currentHeight.text = "Current Height: " + transform.position.y.ToString();
+			string maxHeightVal;
+			maxHeightVal = maxHeight.text.Remove(0, 12);
+			if(transform.position.y > float.Parse(maxHeightVal))
+				maxHeight.text = "Max Height: " + transform.position.y.ToString();
+		}
+
 
 	 	//Control
 		if(isLaunching)
