@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
+using System;
 
 public class Launch : MonoBehaviour {
 
@@ -10,6 +11,7 @@ public class Launch : MonoBehaviour {
 	bool track;
 	bool isLaunching;
 	bool powerUp;
+	string maxHeightVal;
 
 	public Text currentDistance;
 	public Text currentHeight;
@@ -45,12 +47,12 @@ public class Launch : MonoBehaviour {
 	 	//UI
 		if(track)
 		{
-			currentDistance.text = "Distance: " + transform.position.x.ToString();
-			currentHeight.text = "Current Height: " + transform.position.y.ToString();
-			string maxHeightVal;
+			currentDistance.text = "Distance: " + Math.Round(transform.position.x, 1).ToString();
+			currentHeight.text = "Current Height: " + Math.Round(transform.position.y, 1).ToString();
+
 			maxHeightVal = maxHeight.text.Remove(0, 12);
 			if(transform.position.y > float.Parse(maxHeightVal))
-				maxHeight.text = "Max Height: " + transform.position.y.ToString();
+				maxHeight.text = "Max Height: " + Math.Round(transform.position.y, 1	).ToString();
 		}
 
 
