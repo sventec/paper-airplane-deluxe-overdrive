@@ -20,10 +20,16 @@ public class Launch : MonoBehaviour {
 
 	public float power;
 
+	Mod testMod = new Mod();
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		isLaunching = false;
+		/* testMod.debugMethod ();
+		Debug.Log (testMod.modString); // This should be null
+		testMod.modString = "new modString";
+		Debug.Log (testMod.modString); // This should say 'new modString' */
 	}
 
 	public void Throw(float force)
