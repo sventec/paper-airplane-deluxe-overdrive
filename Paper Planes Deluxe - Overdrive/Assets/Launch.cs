@@ -8,10 +8,13 @@ public class Launch : MonoBehaviour {
 
 	Rigidbody2D rb;
 	bool isAirborne;
-	bool track;
 	bool isLaunching;
+	bool isLanding;
 	bool powerUp;
+	bool track;
 	string maxHeightVal;
+
+	int dolla;
 
 	public Text currentDistance;
 	public Text currentHeight;
@@ -20,23 +23,42 @@ public class Launch : MonoBehaviour {
 
 	public float power;
 
+	public Vector3 prevPos;
+
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
+		dolla = 0;
+		Init();
+	}
+
+	void Init()
+	{
+		prevPos = new Vector3();
 		isLaunching = false;
+		isAirborne = false;
+		isLanding = false;
+		track = false;
+		transform.position = new Vector3(0,20,0);
+		transform.rotation = Quaternion.Euler(new Vector3(0,0,45));
+		rb.velocity = new Vector2();
+		rb.simulated = false;
 	}
 
 	public void Throw(float force)
 	{
 		rb.simulated = true;
 		rb.AddRelativeForce(new Vector2(force, 0), ForceMode2D.Impulse);
+		isLaunching = false;
 		isAirborne = true;
 		track = true;
+		power = 0;
+		powerSlider.value = power;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//Ragdoll
+		//Rotate to face velocity
 		if(isAirborne)
 		{
 			Vector2 v = rb.velocity;
@@ -44,20 +66,55 @@ public class Launch : MonoBehaviour {
 	 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	 	}
 
-	 	//UI
+	 	//UI updates
 		if(track)
 		{
-			currentDistance.text = "Distance: " + Math.Round(transform.position.x, 1).ToString();
-			currentHeight.text = "Current Height: " + Math.Round(transform.position.y, 1).ToString();
-
-			maxHeightVal = maxHeight.text.Remove(0, 12);
-			if(transform.position.y > float.Parse(maxHeightVal))
-				maxHeight.text = "Max Height: " + Math.Round(transform.position.y, 1	).ToString();
+			TextUpdate();
 		}
 
+		if(!isLanding)
+		{
+			//Launch and flight (?) controls
+			ControlUpdate();
+		}
+		else
+		{
+			//determine stop
+			if(prevPos != transform.position)
+				prevPos = transform.position;
+			else
+			{
+				isLanding = false;
+				rb.simulated = false;
+			}
+		}
+	}
 
-	 	//Control
-		if(isLaunching)
+	void TextUpdate()
+	{
+		currentDistance.text = "Distance: " + Math.Round(transform.position.x, 1).ToString();
+		currentHeight.text = "Current Height: " + Math.Round(transform.position.y, 1).ToString();
+
+		maxHeightVal = maxHeight.text.Remove(0, 12);
+		if(transform.position.y > float.Parse(maxHeightVal))
+			maxHeight.text = "Max Height: " + Math.Round(transform.position.y, 1	).ToString();
+	}
+
+	void ControlUpdate()
+	{
+		//Landing controls
+		if(isLanding)
+		{
+			//no landing controls yet
+		}
+		//Air controls
+		if(isAirborne)
+		{
+			//no airborne controls yet
+		}
+
+		//Launch confirm
+		else if(isLaunching)
 		{
 			if(powerUp)
 			{
@@ -72,19 +129,24 @@ public class Launch : MonoBehaviour {
 					powerUp = true;
 			}
 			powerSlider.value = power;
+			//Launch on space/m1 up!
 			if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
 			{
-		 		Throw(power);
-		 		isLaunching = false;
-				power = 0;
-				powerSlider.value = power;
+				Throw(power);
 		 	}
 		}
-		if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-			&& !isLaunching)
+		//Start launch on space/m1
+		else if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+			&& !isLaunching && !isAirborne && !isLanding)
 		{
 			isLaunching = true;
 			powerUp = true;
+		}
+
+		//Reset!
+		if(Input.GetKeyDown(KeyCode.R))
+		{
+			Init();
 		}
 	}
 
@@ -93,6 +155,16 @@ public class Launch : MonoBehaviour {
 		if(col.gameObject.tag == "Ground")
 		{
 			isAirborne = false;
+			isLanding = true;
+		}
+	}
+
+	void OnCollisionExit2D(Collision2D col)
+	{
+		if(col.gameObject.tag == "Ground")
+		{
+			isAirborne = true;
+			isLanding = false;
 		}
 	}
 }
