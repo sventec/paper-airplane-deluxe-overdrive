@@ -21,11 +21,14 @@ public class Launch : MonoBehaviour {
 	public float power;
 
 	Mod testMod = new Mod();
+	Mod rocketMod = new Mod();
 
 	// Use this for initialization
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		isLaunching = false;
+		rocketMod.enabled = true;
+		rocketMod.vel = 5;
 		/* testMod.debugMethod ();
 		Debug.Log (testMod.modString); // This should be null
 		testMod.modString = "new modString";
@@ -34,8 +37,12 @@ public class Launch : MonoBehaviour {
 
 	public void Throw(float force)
 	{
+		float modForce;
+		modForce = force;
+		if (rocketMod.enabled)
+			modForce = force + rocketMod.vel;
 		rb.simulated = true;
-		rb.AddRelativeForce(new Vector2(force, 0), ForceMode2D.Impulse);
+		rb.AddRelativeForce(new Vector2(modForce, 0), ForceMode2D.Impulse);
 		isAirborne = true;
 		track = true;
 	}
