@@ -27,7 +27,7 @@ public class Launch : MonoBehaviour {
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		isLaunching = false;
-		rocketMod.enabled = true;
+		rocketMod.enabled = false;
 		rocketMod.vel = 5;
 		/* testMod.debugMethod ();
 		Debug.Log (testMod.modString); // This should be null
