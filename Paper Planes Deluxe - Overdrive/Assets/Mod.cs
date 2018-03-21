@@ -14,4 +14,9 @@ public class Mod {
 
 	// Mod Main //
 
+	public float vel;
+	public float grav;
+	public float stab; // Stabilization modifiers? Make acceptable launch force higher, etc?
+	public bool enabled;
+
 }

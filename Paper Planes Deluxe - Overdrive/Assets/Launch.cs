@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
@@ -23,7 +23,11 @@ public class Launch : MonoBehaviour {
 
 	public float power;
 
+
+	Mod testMod = new Mod();
+	Mod rocketMod = new Mod();
 	public Vector3 prevPos;
+
 
 	// Use this for initialization
 	void Start () {
@@ -36,6 +40,14 @@ public class Launch : MonoBehaviour {
 	{
 		prevPos = new Vector3();
 		isLaunching = false;
+
+		rocketMod.enabled = false;
+		rocketMod.vel = 5;
+		/* testMod.debugMethod ();
+		Debug.Log (testMod.modString); // This should be null
+		testMod.modString = "new modString";
+		Debug.Log (testMod.modString); // This should say 'new modString' */
+
 		isAirborne = false;
 		isLanding = false;
 		track = false;
@@ -43,13 +55,20 @@ public class Launch : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(new Vector3(0,0,45));
 		rb.velocity = new Vector2();
 		rb.simulated = false;
+
 	}
 
 	public void Throw(float force)
 	{
+		float modForce;
+		modForce = force;
+		if (rocketMod.enabled)
+			modForce = force + rocketMod.vel;
 		rb.simulated = true;
-		rb.AddRelativeForce(new Vector2(force, 0), ForceMode2D.Impulse);
+
+		rb.AddRelativeForce(new Vector2(modForce, 0), ForceMode2D.Impulse);
 		isLaunching = false;
+
 		isAirborne = true;
 		track = true;
 		power = 0;
