@@ -9,10 +9,14 @@ public class Launch : MonoBehaviour {
 	bool isAirborne;
 	bool track;
 	bool isLaunching;
+	bool powerUp;
 
 	public Text currentDistance;
 	public Text currentHeight;
 	public Text maxHeight;
+	public Slider powerSlider;
+
+	public float power;
 
 	// Use this for initialization
 	void Start () {
@@ -48,20 +52,35 @@ public class Launch : MonoBehaviour {
 	 	}
 
 	 	//Control
-	 	if(Input.GetMouseButton(0))
-	 	{
-
-	 	}
-	 	if(Input.GetMouseButtonUp(0) && isLaunching)
-	 	{
-
-	 	}
-	 	//Debug
-	 	if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-	 	 && isLaunching)
-	 	{
-	 		Throw(25);
-	 	}
+		if(isLaunching)
+		{
+			if(powerUp)
+			{
+				power += Time.deltaTime * powerSlider.maxValue;
+				if(power >= powerSlider.maxValue)
+					powerUp = false;
+			}
+			else
+			{
+				power -= Time.deltaTime * powerSlider.maxValue;
+				if(power <= powerSlider.minValue)
+					powerUp = true;
+			}
+			powerSlider.value = power;
+			if(Input.GetKeyUp(KeyCode.Space) || Input.GetMouseButtonUp(0))
+			{
+		 		Throw(power);
+		 		isLaunching = false;
+				power = 0;
+				powerSlider.value = power;
+		 	}
+		}
+		if((Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
+			&& !isLaunching)
+		{
+			isLaunching = true;
+			powerUp = true;
+		}
 	}
 
 	void OnCollisionEnter2D(Collision2D col)
