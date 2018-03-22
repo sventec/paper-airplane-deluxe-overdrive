@@ -13,6 +13,24 @@ public class ModMenu : MonoBehaviour {
 	void Start () {
 		modList = new List<Mod>();
 		activeMods = new List<Mod>();
+
+		//Debug
+		Mod rocket = new Mod();
+		rocket.modString = "Rocket Engine";
+		rocket.vel = 5;
+		rocket.grav = 0.25f;
+		modList.Add(rocket);
+
+		Mod balloon = new Mod();
+		balloon.modString = "Balloon";
+		balloon.grav = -.5f;
+		modList.Add(balloon);
+
+		Mod lead = new Mod();
+		lead.modString = "Lead";
+		lead.grav = 1;
+		modList.Add(lead);
+
 		Refresh();
 	}
 	
@@ -35,6 +53,7 @@ public class ModMenu : MonoBehaviour {
 				entry.text = mod.modString;
 				d.options.Add(entry);
 			}
+			d.RefreshShownValue();
 		}
 	}
 }
