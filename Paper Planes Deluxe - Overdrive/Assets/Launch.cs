@@ -66,7 +66,7 @@ public class Launch : MonoBehaviour {
 	void ModProperties()
 	{
 		rocketMod.vel = 5;
-		rocketMod.grav = 0.2;
+		rocketMod.grav = 0.25f;
 	}
 
 	public void Throw(float force)
@@ -88,7 +88,8 @@ public class Launch : MonoBehaviour {
 		powerSlider.value = power;
 
 		// Gravity mods below
-
+		if (rocketMod.enabled)
+			rb.gravityScale += rocketMod.grav;
 		// --- //
 	}
 	
