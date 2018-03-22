@@ -3320,7 +3320,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290145247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13213fa8fd20449ca98e0a8f4540cf95, type: 3}
+  m_Script: {fileID: 11500000, guid: 443dc66c06e4b46fd90ca2a2f8d64546, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modSlots:
@@ -4847,13 +4847,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1877167167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d2e3f6b10d34e4c18b1dc869297de2e7, type: 3}
+  m_Script: {fileID: 11500000, guid: 20272ee40454b419b852ab43043c48c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mods:
-  - {fileID: 1084105696432486, guid: e45d37646c06046f1baa404db1f520bd, type: 2}
-  - {fileID: 1186879680438592, guid: c76cad7e6d4964f2baf2de376d4ff18c, type: 2}
-  - {fileID: 1944704526988674, guid: c0b6b9bcb2d814720b3a1cc1d59fec04, type: 2}
+  - {fileID: 1084105696432486, guid: b2143121a138b4e639398bf7a96b9737, type: 2}
+  - {fileID: 1186879680438592, guid: 6316bb8cb1d744ccc844614a0e28483b, type: 2}
+  - {fileID: 1944704526988674, guid: 9c4f9a38c7e5e4c15823b582736882f9, type: 2}
   modInv: {fileID: 1290145249}
 --- !u!225 &1877167170
 CanvasGroup:

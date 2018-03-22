@@ -39,7 +39,7 @@ GameObject:
   - component: {fileID: 222094142811614696}
   - component: {fileID: 114306438014049672}
   - component: {fileID: 114162226987273618}
-  - component: {fileID: 114195301280776824}
+  - component: {fileID: 114994224244552688}
   m_Layer: 5
   m_Name: LeadStoreMod
   m_TagString: Untagged
@@ -86,7 +86,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114195301280776824}
+      - m_Target: {fileID: 114994224244552688}
         m_MethodName: Purchase
         m_Mode: 1
         m_Arguments:
@@ -99,19 +99,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114195301280776824
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1944704526988674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae94d8561d32048ed9eab8222408c60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 2
-  cost: 1
 --- !u!114 &114306438014049672
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,6 +153,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114994224244552688
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1944704526988674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865daf14310ce42c196e6f4ab1d89f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  cost: 1
 --- !u!222 &222094142811614696
 CanvasRenderer:
   m_ObjectHideFlags: 1

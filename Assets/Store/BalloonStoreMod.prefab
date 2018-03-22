@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 222358544036229724}
   - component: {fileID: 114690464623743880}
   - component: {fileID: 114845938769798300}
-  - component: {fileID: 114623772187101802}
+  - component: {fileID: 114698980761750934}
   m_Layer: 5
   m_Name: BalloonStoreMod
   m_TagString: Untagged
@@ -74,19 +74,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114623772187101802
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1186879680438592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae94d8561d32048ed9eab8222408c60a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  id: 1
-  cost: 50
 --- !u!114 &114690464623743880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -114,6 +101,19 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114698980761750934
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1186879680438592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 865daf14310ce42c196e6f4ab1d89f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  cost: 50
 --- !u!114 &114845938769798300
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,7 +153,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 114623772187101802}
+      - m_Target: {fileID: 114698980761750934}
         m_MethodName: Purchase
         m_Mode: 1
         m_Arguments:
