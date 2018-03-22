@@ -15,7 +15,7 @@ public class ModMenu : MonoBehaviour {
 		activeMods = new List<Mod>();
 
 		//Debug
-		Mod rocket = new Mod();
+		/*Mod rocket = new Mod();
 		rocket.modString = "Rocket Engine";
 		rocket.vel = 5;
 		rocket.grav = 0.25f;
@@ -29,7 +29,7 @@ public class ModMenu : MonoBehaviour {
 		Mod lead = new Mod();
 		lead.modString = "Lead";
 		lead.grav = 1;
-		modList.Add(lead);
+		modList.Add(lead);*/
 
 		Refresh();
 	}
@@ -37,6 +37,15 @@ public class ModMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		
+	}
+
+	public void AddMod(Mod m)
+	{
+		if(!modList.Contains(m))
+		{
+			modList.Add(m);
+		}
+		Refresh();
 	}
 
 	public void Refresh()

@@ -3286,7 +3286,7 @@ GameObject:
   - component: {fileID: 1290145249}
   m_Layer: 5
   m_Name: Mods
-  m_TagString: Untagged
+  m_TagString: Inventory
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4816,7 +4816,7 @@ GameObject:
   - component: {fileID: 1877167169}
   m_Layer: 5
   m_Name: StoreUI
-  m_TagString: Untagged
+  m_TagString: Store
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4850,6 +4850,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d2e3f6b10d34e4c18b1dc869297de2e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mods:
+  - {fileID: 1084105696432486, guid: e45d37646c06046f1baa404db1f520bd, type: 2}
+  - {fileID: 1186879680438592, guid: c76cad7e6d4964f2baf2de376d4ff18c, type: 2}
+  - {fileID: 1944704526988674, guid: c0b6b9bcb2d814720b3a1cc1d59fec04, type: 2}
+  modInv: {fileID: 1290145249}
 --- !u!225 &1877167170
 CanvasGroup:
   m_ObjectHideFlags: 0

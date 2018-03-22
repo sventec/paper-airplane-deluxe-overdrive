@@ -46,11 +46,11 @@ public class Launch : MonoBehaviour {
 		isLaunching = false;
 
 		// Enable Mods START //
-		modArray.Add (rocketMod);
-		modArray.Add (balloonMod);
+		//modArray.Add (rocketMod);
+		//modArray.Add (balloonMod);
 
-		rocketMod.enabled = false;
-		balloonMod.enabled = true;	
+		//rocketMod.enabled = false;
+		//balloonMod.enabled = true;	
 		// Enable Mods END //
 
 		/* testMod.debugMethod ();
