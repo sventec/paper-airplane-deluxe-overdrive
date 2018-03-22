@@ -33,7 +33,8 @@ public class Launch : MonoBehaviour {
 	void Start () {
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		dolla = 0;
-		Init();
+		Init ();
+		ModProperties ();
 	}
 
 	void Init()
@@ -41,8 +42,11 @@ public class Launch : MonoBehaviour {
 		prevPos = new Vector3();
 		isLaunching = false;
 
+		// Enable Mods START //
 		rocketMod.enabled = false;
-		rocketMod.vel = 5;
+
+		// Enable Mods END //
+
 		/* testMod.debugMethod ();
 		Debug.Log (testMod.modString); // This should be null
 		testMod.modString = "new modString";
@@ -58,12 +62,21 @@ public class Launch : MonoBehaviour {
 
 	}
 
+	// Init properties of all mods
+	void ModProperties()
+	{
+		rocketMod.vel = 5;
+		rocketMod.grav = 0.25f;
+	}
+
 	public void Throw(float force)
 	{
 		float modForce;
 		modForce = force;
+		// Force/Velocity mods below
 		if (rocketMod.enabled)
 			modForce = force + rocketMod.vel;
+		// --- //
 		rb.simulated = true;
 
 		rb.AddRelativeForce(new Vector2(modForce, 0), ForceMode2D.Impulse);
@@ -73,6 +86,11 @@ public class Launch : MonoBehaviour {
 		track = true;
 		power = 0;
 		powerSlider.value = power;
+
+		// Gravity mods below
+		if (rocketMod.enabled)
+			rb.gravityScale += rocketMod.grav;
+		// --- //
 	}
 	
 	// Update is called once per frame
