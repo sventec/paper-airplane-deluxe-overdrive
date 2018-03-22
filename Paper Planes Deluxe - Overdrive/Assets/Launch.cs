@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine;
 using System;
+using System.Linq;
 
 public class Launch : MonoBehaviour {
 
@@ -26,6 +27,8 @@ public class Launch : MonoBehaviour {
 
 	Mod testMod = new Mod();
 	Mod rocketMod = new Mod();
+	Mod balloonMod = new Mod();
+	List<Mod> modArray = new List<Mod>();
 	public Vector3 prevPos;
 
 
@@ -43,8 +46,11 @@ public class Launch : MonoBehaviour {
 		isLaunching = false;
 
 		// Enable Mods START //
-		rocketMod.enabled = false;
+		modArray.Add (rocketMod);
+		modArray.Add (balloonMod);
 
+		rocketMod.enabled = false;
+		balloonMod.enabled = true;	
 		// Enable Mods END //
 
 		/* testMod.debugMethod ();
@@ -67,6 +73,9 @@ public class Launch : MonoBehaviour {
 	{
 		rocketMod.vel = 5;
 		rocketMod.grav = 0.25f;
+
+		balloonMod.vel = -0.85f;
+		balloonMod.grav = -0.45f;
 	}
 
 	public void Throw(float force)
@@ -74,8 +83,12 @@ public class Launch : MonoBehaviour {
 		float modForce;
 		modForce = force;
 		// Force/Velocity mods below
-		if (rocketMod.enabled)
-			modForce = force + rocketMod.vel;
+		foreach (Mod mod in modArray) {
+			if (mod.enabled == true)
+				modForce += mod.vel;
+		}
+		//if (rocketMod.enabled)
+		//	modForce = force + rocketMod.vel;
 		// --- //
 		rb.simulated = true;
 
@@ -88,8 +101,12 @@ public class Launch : MonoBehaviour {
 		powerSlider.value = power;
 
 		// Gravity mods below
-		if (rocketMod.enabled)
-			rb.gravityScale += rocketMod.grav;
+		foreach (Mod mod in modArray) {
+			if (mod.enabled == true)
+				rb.gravityScale += mod.grav;
+		}
+		//if (rocketMod.enabled)
+		//	rb.gravityScale += rocketMod.grav;
 		// --- //
 	}
 	
