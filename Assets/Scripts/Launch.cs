@@ -149,6 +149,11 @@ public class Launch : MonoBehaviour {
 		if(isAirborne)
 		{
 			Vector2 v = rb.velocity;
+			if(v.y < (8 / -v.x) - 2)
+			{
+				v.y = (8 / -v.x) - 2;
+				rb.velocity = v;
+			}
 			float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
 	 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	 	}
@@ -255,7 +260,6 @@ public class Launch : MonoBehaviour {
 		{
 			isAirborne = true;
 			isLanding = false;
-			bgSound.Play();
 		}
 	}
 
