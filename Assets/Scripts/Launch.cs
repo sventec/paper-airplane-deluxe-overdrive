@@ -32,6 +32,8 @@ public class Launch : MonoBehaviour {
 	private AudioSource landSound;
 	private AudioSource bgSound;
 
+	public GameObject cloudRef;
+
 	Mod testMod = new Mod();
 	Mod rocketMod = new Mod();
 	Mod balloonMod = new Mod();
@@ -156,6 +158,10 @@ public class Launch : MonoBehaviour {
 			}
 			float angle = Mathf.Atan2(v.y, v.x) * Mathf.Rad2Deg;
 	 		transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+
+	 		Vector3 cloudPos = cloudRef.transform.position;
+	 		cloudPos.x = transform.position.x / 2;
+	 		cloudRef.transform.position = cloudPos;
 	 	}
 
 	 	//UI updates

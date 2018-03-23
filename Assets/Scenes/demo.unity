@@ -1415,6 +1415,7 @@ MonoBehaviour:
   launchFx: {fileID: 8300000, guid: 47eb556d2b7f84b148ed4d1c27a4ce6e, type: 3}
   landFX: {fileID: 8300000, guid: 6b8b411a3f1db49c6a896754bf7082ab, type: 3}
   bgFX: {fileID: 8300000, guid: 14b3587eeae404504b71e4a4ce7650d1, type: 3}
+  cloudRef: {fileID: 1282928303}
 --- !u!60 &412698968
 PolygonCollider2D:
   m_ObjectHideFlags: 0
