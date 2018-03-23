@@ -1032,10 +1032,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d95d64cbc75949e8a20502d3c446489, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDistance: {fileID: 0}
-  currentHeight: {fileID: 0}
-  maxHeight: {fileID: 0}
-  powerSlider: {fileID: 0}
+  currentDistance: {fileID: 1143080607}
+  currentHeight: {fileID: 2009046759}
+  maxHeight: {fileID: 493957376}
+  powerSlider: {fileID: 783690702}
   resetBtn: {fileID: 1740789881}
   power: 0
   prevPos: {x: 0, y: 0, z: 0}
@@ -3396,7 +3396,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1290145247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 443dc66c06e4b46fd90ca2a2f8d64546, type: 3}
+  m_Script: {fileID: 11500000, guid: f8395042fefb345ecb83a8207b940e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   modSlots:
@@ -4611,12 +4611,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 4d95d64cbc75949e8a20502d3c446489, type: 3}
-        m_MethodName: 
+      - m_Target: {fileID: 412698967}
+        m_MethodName: Relaunch
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -4815,7 +4815,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1779807432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0143448b49c3a4c56a1d15e2c40ac1dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 300f22a0dc9f94764b2060d1627279ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 412698963}
@@ -5045,13 +5045,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1877167167}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20272ee40454b419b852ab43043c48c0, type: 3}
+  m_Script: {fileID: 11500000, guid: 263f51a6772734188a19072c9d1f6c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   mods:
-  - {fileID: 1084105696432486, guid: b2143121a138b4e639398bf7a96b9737, type: 2}
-  - {fileID: 1186879680438592, guid: 6316bb8cb1d744ccc844614a0e28483b, type: 2}
-  - {fileID: 1944704526988674, guid: 9c4f9a38c7e5e4c15823b582736882f9, type: 2}
+  - {fileID: 1084105696432486, guid: 764fbb18d167b46f8a40d72ac1ca2522, type: 2}
+  - {fileID: 1186879680438592, guid: 884db5976407e46c1894e141e3d45be8, type: 2}
+  - {fileID: 1944704526988674, guid: c9086518b4a724dba83e15f33da94ef3, type: 2}
   modInv: {fileID: 1290145249}
 --- !u!225 &1877167170
 CanvasGroup:

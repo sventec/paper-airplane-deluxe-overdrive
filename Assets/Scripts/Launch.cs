@@ -23,18 +23,46 @@ public class Launch : MonoBehaviour {
 	public Slider powerSlider;
 	public Button resetBtn;
 
-	public float power;
+	private float power;
 
+	public AudioClip launchFx;
+	public AudioClip landFX;
+	public AudioClip bgFX;
+	private AudioSource launchSound;
+	private AudioSource landSound;
+	private AudioSource bgSound;
 
 	Mod testMod = new Mod();
 	Mod rocketMod = new Mod();
 	Mod balloonMod = new Mod();
 	List<Mod> modArray = new List<Mod>();
-	public Vector3 prevPos;
+	private Vector3 prevPos;
 
 
 	// Use this for initialization
 	void Start () {
+		//Audio
+		launchSound = gameObject.AddComponent<AudioSource>();
+		landSound = gameObject.AddComponent<AudioSource>();
+		bgSound = gameObject.AddComponent<AudioSource>();
+
+		launchSound.loop = false;
+		landSound.loop = false;
+		bgSound.loop = true;
+
+		launchSound.playOnAwake = false;
+		landSound.playOnAwake = false;
+		bgSound.playOnAwake = false;
+
+		launchSound.volume = 1;
+		landSound.volume = 1;
+		bgSound.volume = 1;
+
+		launchSound.clip = launchFx;
+		landSound.clip = landFX;
+		bgSound.clip = bgFX;
+		//End Audio
+
 		rb = gameObject.GetComponent<Rigidbody2D>();
 		dolla = 0;
 		Init ();
@@ -67,6 +95,7 @@ public class Launch : MonoBehaviour {
 		rb.velocity = new Vector2();
 		rb.simulated = false;
 		resetBtn.gameObject.SetActive(false);
+		bgSound.Stop();
 	}
 
 	// Init properties of all mods
@@ -109,6 +138,9 @@ public class Launch : MonoBehaviour {
 		//if (rocketMod.enabled)
 		//	rb.gravityScale += rocketMod.grav;
 		// --- //
+
+		launchSound.Play();
+		bgSound.Play();
 	}
 	
 	// Update is called once per frame
@@ -212,6 +244,8 @@ public class Launch : MonoBehaviour {
 		{
 			isAirborne = false;
 			isLanding = true;
+			landSound.Play();
+			bgSound.Stop();
 		}
 	}
 
@@ -221,12 +255,13 @@ public class Launch : MonoBehaviour {
 		{
 			isAirborne = true;
 			isLanding = false;
+			bgSound.Play();
 		}
 	}
 
-	public void relaunch()
+	public void Relaunch()
 	{
-		dolla += currentDistance;
+		dolla += (int)Math.Round(transform.position.x, 1);
 		Init();
 	}
 }
