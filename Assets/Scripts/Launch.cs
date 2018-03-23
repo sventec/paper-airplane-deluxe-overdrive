@@ -21,6 +21,7 @@ public class Launch : MonoBehaviour {
 	public Text currentHeight;
 	public Text maxHeight;
 	public Slider powerSlider;
+	public Button resetBtn;
 
 	public float power;
 
@@ -40,7 +41,7 @@ public class Launch : MonoBehaviour {
 		ModProperties ();
 	}
 
-	void Init()
+	public void Init()
 	{
 		prevPos = new Vector3();
 		isLaunching = false;
@@ -65,7 +66,7 @@ public class Launch : MonoBehaviour {
 		transform.rotation = Quaternion.Euler(new Vector3(0,0,45));
 		rb.velocity = new Vector2();
 		rb.simulated = false;
-
+		resetBtn.gameObject.SetActive(false);
 	}
 
 	// Init properties of all mods
@@ -140,6 +141,7 @@ public class Launch : MonoBehaviour {
 			{
 				isLanding = false;
 				rb.simulated = false;
+				resetBtn.gameObject.SetActive(true);
 			}
 		}
 	}
@@ -220,5 +222,11 @@ public class Launch : MonoBehaviour {
 			isAirborne = true;
 			isLanding = false;
 		}
+	}
+
+	public void relaunch()
+	{
+		dolla += currentDistance;
+		Init();
 	}
 }
